@@ -47,6 +47,16 @@ Preview with a local HTTP server; do not open via file:// because Canvas image s
 
 The Shorts reference is clearer for the initial star, particle-built R, dimensional five-point stars during breakup, and vertical portrait streaks.
 
+## Agreed fan-tribute captions
+
+- Top left: A TRIBUTE TO THALAIVAR.
+- Top right: A FAN CREATION.
+- Main footer: Forever a Thalaivar fan.
+- Credit: Made with love by Arun Gudelli.
+- Small inspiration line: Inspired by the Jailer 2 title sequence.
+
+These replace the earlier Written in stars / Superstar captions. The centered click-to-start star and sound behavior remain the same.
+
 ## Workflow
 
-Make and review visual changes locally first. Publish when the user requests it. The animation and music are in commit ab93d7a. The next checkpoint adds the centered click-to-start star and this context note. Preserve these checkpoints and make future changes as new commits.
+Make and review visual changes locally first. Publish when the user requests it. The animation and music are in commit ab93d7a. The centered click-to-start star and context note are in commit 10e3ef5, pushed by the user before these caption edits. Preserve these checkpoints and make future changes as new commits.

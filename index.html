@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
-  <title>Rajini · Written in stars</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <title>A tribute to Thalaivar | Arun Gudelli</title>
+  <meta name="description" content="A fan tribute to Thalaivar, inspired by the Jailer 2 title sequence. Made with love by Arun Gudelli.">
+  <link rel="stylesheet" href="style.css?v=7">
   <script src="app.js?v=3" defer></script>
 </head>
 <body>
@@ -17,10 +18,35 @@
         <span id="start-tooltip" role="tooltip">Preparing…</span>
       </button>
     </div>
-    <header><span class="eyebrow">A PORTRAIT IN LIGHT</span><span class="edition">RAJINI / 001</span></header>
+    <header>
+      <span class="eyebrow">A TRIBUTE TO THALAIVAR</span>
+      <nav class="social-links" aria-label="Social profiles and source code">
+      <a class="social-link" href="https://github.com/arungudelli/rajini-stars" target="_blank" rel="noopener noreferrer" aria-label="View source on GitHub" title="View source on GitHub">
+        <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .26 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+        </svg>
+      </a>
+      <a class="social-link" href="https://www.instagram.com/codewitharungudelli/" target="_blank" rel="noopener noreferrer" aria-label="Arun Gudelli on Instagram" title="Instagram: @codewitharungudelli">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a class="social-link" href="https://www.linkedin.com/in/arungudelli/" target="_blank" rel="noopener noreferrer" aria-label="Arun Gudelli on LinkedIn" title="Arun Gudelli on LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M20.45 0H3.55A3.55 3.55 0 0 0 0 3.55v16.9A3.55 3.55 0 0 0 3.55 24h16.9A3.55 3.55 0 0 0 24 20.45V3.55A3.55 3.55 0 0 0 20.45 0ZM7.12 20.45H3.56V9h3.56ZM5.34 7.44a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm15.11 13.01H16.9v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46Z"/>
+        </svg>
+      </a>
+      </nav>
+    </header>
     <div id="message" role="status">Preparing the stars…</div>
     <footer hidden>
-      <div class="caption"><span class="eyebrow">WRITTEN IN STARS</span><h1>Superstar.</h1></div>
+      <div class="caption">
+        <!-- <h1>Forever a Thalaivar fan.</h1> -->
+        <p class="credit">Made with <svg class="heart-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="love"><path d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"/></svg> by <a href="https://www.linkedin.com/in/arungudelli/" target="_blank" rel="noopener noreferrer">Arun Gudelli</a></p>
+        <!-- <p class="inspiration">Inspired by the Jailer 2 title sequence</p> -->
+      </div>
       <div class="transport">
         <div class="buttons"><button id="sound">Play with sound</button><button id="replay" aria-label="Replay animation">↻ <span>Replay</span></button><button id="pause">Pause</button><button id="fullscreen" aria-label="Toggle fullscreen">⛶</button></div>
         <label class="seek"><span class="sr-only">Animation progress</span><input id="progress" type="range" min="0" max="20" step="0.01" value="0"><output id="time">00:00 / 00:20</output></label>
