@@ -10,14 +10,15 @@
 </head>
 <body>
   <main>
-    <canvas id="scene" role="img" aria-label="Glowing stars gather to form a portrait of Rajinikanth wearing sunglasses."></canvas>
+    <audio id="music" src="theme-20s.mp3" preload="metadata"></audio>
+    <canvas id="scene" role="img" aria-label="A large silver star shrinks into the distance and vanishes. The letter R appears, splits into stars, and vertical streams reveal Rajinikanth."></canvas>
     <header><span class="eyebrow">A PORTRAIT IN LIGHT</span><span class="edition">RAJINI / 001</span></header>
     <div id="message" role="status">Preparing the stars…</div>
     <footer>
       <div class="caption"><span class="eyebrow">WRITTEN IN STARS</span><h1>Superstar.</h1></div>
       <div class="transport">
-        <div class="buttons"><button id="replay" aria-label="Replay animation">↻ <span>Replay</span></button><button id="pause">Pause</button><button id="fullscreen" aria-label="Toggle fullscreen">⛶</button></div>
-        <label class="seek"><span class="sr-only">Animation progress</span><input id="progress" type="range" min="0" max="12" step="0.01" value="0"><output id="time">00:00 / 00:12</output></label>
+        <div class="buttons"><button id="sound">Play with sound</button><button id="replay" aria-label="Replay animation">↻ <span>Replay</span></button><button id="pause">Pause</button><button id="fullscreen" aria-label="Toggle fullscreen">⛶</button></div>
+        <label class="seek"><span class="sr-only">Animation progress</span><input id="progress" type="range" min="0" max="20" step="0.01" value="0"><output id="time">00:00 / 00:20</output></label>
       </div>
     </footer>
   </main>
