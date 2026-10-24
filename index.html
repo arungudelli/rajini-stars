@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Rajini · Written in stars</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <canvas id="scene" role="img" aria-label="Glowing stars gather to form a portrait of Rajinikanth wearing sunglasses."></canvas>
+    <header><span class="eyebrow">A PORTRAIT IN LIGHT</span><span class="edition">RAJINI / 001</span></header>
+    <div id="message" role="status">Preparing the stars…</div>
+    <footer>
+      <div class="caption"><span class="eyebrow">WRITTEN IN STARS</span><h1>Superstar.</h1></div>
+      <div class="transport">
+        <div class="buttons"><button id="replay" aria-label="Replay animation">↻ <span>Replay</span></button><button id="pause">Pause</button><button id="fullscreen" aria-label="Toggle fullscreen">⛶</button></div>
+        <label class="seek"><span class="sr-only">Animation progress</span><input id="progress" type="range" min="0" max="12" step="0.01" value="0"><output id="time">00:00 / 00:12</output></label>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
