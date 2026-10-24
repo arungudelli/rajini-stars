@@ -7,9 +7,15 @@ const pauseButton = document.querySelector('#pause');
 const message = document.querySelector('#message');
 const music = document.querySelector('#music');
 const soundButton = document.querySelector('#sound');
+const startOverlay = document.querySelector('#start-overlay');
+const startButton = document.querySelector('#start-star');
+const startTooltip = document.querySelector('#start-tooltip');
+const footer = document.querySelector('footer');
 const DURATION = 20;
 const PORTRAIT_START = 7.25;
 let soundEnabled = false;
+let waitingForSound = false;
+let experienceStarted = false;
 const BREAKUP_STAR_COUNT = 150;
 const PORTRAIT_COLUMNS = 176;
 const PORTRAIT_WAVES = 3;
@@ -236,10 +242,23 @@ function draw(t, shimmerTime = t){
     }
   }
 }
-function syncControls(){progress.value=elapsed;timeLabel.value=`00:${String(Math.floor(elapsed)).padStart(2,'0')} / 00:${DURATION}`;pauseButton.textContent=playing?'Pause':elapsed>=DURATION?'Play again':'Play';}
+function syncControls(){
+  progress.value=elapsed;timeLabel.value=`00:${String(Math.floor(elapsed)).padStart(2,'0')} / 00:${DURATION}`;
+  pauseButton.textContent=playing?'Pause':elapsed>=DURATION?'Play again':'Play';
+  if(!soundButton.disabled){
+    soundButton.textContent=waitingForSound||!soundEnabled?'Play with sound':music.muted?'Unmute':'Mute';
+    if(waitingForSound||!soundEnabled)soundButton.removeAttribute('aria-pressed');
+    else soundButton.setAttribute('aria-pressed',String(!music.muted));
+  }
+}
 function frame(now){
   const dt=lastFrame?Math.min((now-lastFrame)/1000,.06):0;lastFrame=now;
   if(ready){
+    if(!experienceStarted){
+      ctx.fillStyle='#000';ctx.fillRect(0,0,width,height);
+      silverStar(width/2,height/2,Math.min(72,width*.15),1,-.08,.1);
+      return requestAnimationFrame(frame);
+    }
     if(playing){
       elapsed=Math.min(DURATION,soundEnabled&&!music.paused?music.currentTime:elapsed+dt);
       if(elapsed>=DURATION){playing=false;music.pause();}
@@ -254,19 +273,31 @@ async function startPlayback(){
   if(elapsed>=DURATION)elapsed=0;
   if(soundEnabled){
     music.currentTime=Math.min(elapsed,Number.isFinite(music.duration)?Math.max(0,music.duration-.05):elapsed);
-    try{await music.play();}catch{playing=false;message.textContent='Click Play with sound again to allow audio playback.';message.hidden=false;return;}
+    try{await music.play();}catch{
+      playing=false;waitingForSound=true;
+      experienceStarted=false;startOverlay.hidden=false;footer.hidden=true;
+      startTooltip.textContent='Click here';message.hidden=true;syncControls();return;
+    }
   }
-  playing=true;lastFrame=0;syncControls();
+  waitingForSound=false;message.hidden=true;playing=true;lastFrame=0;syncControls();
 }
 function replay(){if(!ready)return;elapsed=0;music.pause();startPlayback();}
+
+startButton.addEventListener('click',()=>{
+  if(!ready)return;
+  experienceStarted=true;startOverlay.hidden=true;footer.hidden=false;
+  soundEnabled=!soundButton.disabled;music.muted=false;music.volume=.85;
+  elapsed=0;playing=false;message.hidden=true;
+  startPlayback();
+});
 document.querySelector('#replay').addEventListener('click',replay);
 pauseButton.addEventListener('click',()=>{if(!ready)return;if(playing){playing=false;music.pause();syncControls();}else startPlayback();});
 progress.addEventListener('input',()=>{if(!ready)return;elapsed=Number(progress.value);playing=false;music.pause();if(soundEnabled&&Number.isFinite(music.duration))music.currentTime=Math.min(elapsed,music.duration);syncControls();});
 soundButton.addEventListener('click',()=>{
   if(!ready)return;
-  if(!soundEnabled){soundEnabled=true;music.muted=false;elapsed=0;playing=false;message.hidden=true;startPlayback();}
+  if(!soundEnabled||waitingForSound){soundEnabled=true;music.muted=false;elapsed=0;playing=false;startPlayback();}
   else music.muted=!music.muted;
-  soundButton.textContent=music.muted?'Unmute':'Mute';soundButton.setAttribute('aria-pressed',String(!music.muted));
+  syncControls();
 });
 music.addEventListener('ended',()=>{if(soundEnabled){elapsed=DURATION;playing=false;syncControls();}});
 music.addEventListener('error',()=>{soundEnabled=false;music.pause();soundButton.textContent='Audio unavailable';soundButton.disabled=true;message.textContent='Music could not load. The animation can still play.';message.hidden=false;});
@@ -275,7 +306,14 @@ document.querySelector('#fullscreen').addEventListener('click',async()=>{
 });
 document.addEventListener('visibilitychange',()=>{lastFrame=0;});
 const img=new Image();
-img.onload=()=>{try{buildParticles(img);ready=true;message.hidden=true;elapsed=reducedMotion?DURATION:0;playing=!reducedMotion;syncControls();}catch(error){message.textContent='Unable to read the portrait. Open this page through the local preview server.';console.error(error);}};
+img.onload=()=>{
+  try{
+    buildParticles(img);ready=true;message.hidden=true;
+    elapsed=0;playing=false;
+    startButton.disabled=false;startTooltip.textContent='Click here';
+    syncControls();
+  }catch(error){message.textContent='Unable to read the portrait. Open this page through the local preview server.';console.error(error);}
+};
 img.onerror=()=>{message.textContent='Portrait could not load. Check that portrait.png is beside index.html.';};
 img.src='portrait.png';
 requestAnimationFrame(frame);

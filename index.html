@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
   <title>Rajini · Written in stars</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=3">
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <main>
-    <audio id="music" src="theme-20s.mp3" preload="metadata"></audio>
+    <audio id="music" src="theme-20s.mp3" preload="auto"></audio>
     <canvas id="scene" role="img" aria-label="A large silver star shrinks into the distance and vanishes. The letter R appears, splits into stars, and vertical streams reveal Rajinikanth."></canvas>
+    <div id="start-overlay">
+      <button id="start-star" disabled aria-label="Start animation with sound" aria-describedby="start-tooltip">
+        <span id="start-tooltip" role="tooltip">Preparing…</span>
+      </button>
+    </div>
     <header><span class="eyebrow">A PORTRAIT IN LIGHT</span><span class="edition">RAJINI / 001</span></header>
     <div id="message" role="status">Preparing the stars…</div>
-    <footer>
+    <footer hidden>
       <div class="caption"><span class="eyebrow">WRITTEN IN STARS</span><h1>Superstar.</h1></div>
       <div class="transport">
         <div class="buttons"><button id="sound">Play with sound</button><button id="replay" aria-label="Replay animation">↻ <span>Replay</span></button><button id="pause">Pause</button><button id="fullscreen" aria-label="Toggle fullscreen">⛶</button></div>

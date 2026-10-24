@@ -10,5 +10,4 @@ For GitHub Pages later, upload index.html, style.css, app.js, portrait.png and t
 
 The portrait was generated using the built-in image generator with the user's reference image. Prompt: Rajinikanth in sunglasses, formed from sparse white luminous particles and broken vertical light streaks on solid black, matching the supplied portrait's composition.
 
-Music: theme-20s.mp3 contains the opening 19.984 seconds (765 complete MP3 frames) of the user-provided Jailer 2 Theme.mp3. Playback stops at the 20-second animation endpoint and fades during the last second. Click Play with sound to restart the animation and audio together. Pause, Replay and timeline scrubbing also control audio. Visuals can autoplay silently before this click.
-
+Music: theme-20s.mp3 contains the opening 19.984 seconds (765 complete MP3 frames) of the user-provided Jailer 2 Theme.mp3. Playback stops at the 20-second animation endpoint and fades during the last second. On page load, a centered silver star with a Click here tooltip waits silently. Click or keyboard-activate the star to start the animation and audio together from zero. Pause, Replay and timeline scrubbing also control audio. The experience never autoplays on page load.
